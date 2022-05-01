@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
@@ -19,10 +20,26 @@ export default function Home() {
       {/* <Script src="/sc.js" strategy="lazyOnload"></Script> */}
       <nav className={styles.mainnav}>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Blog</li>
-          <li>Contact</li>
+          <li>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about">
+              <a>About</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog">
+              <a>Blog</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact">
+              <a>Contact</a>
+            </Link>
+          </li>
         </ul>
       </nav>
       <main className={styles.main}>
