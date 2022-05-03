@@ -1,20 +1,17 @@
 import Head from "next/head";
 import Image from "next/image";
-import Script from "next/script";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import Dummy from "../components/dummy";
-
-// import styles1 from "../styles/Home1.module.css";
-// import styles2 from "../styles/Home2.module.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Dummy />
       <style jsx>{`
-        .mySpan {
-          color: red;
+        h2 {
+          font-size: 38px;
+        }
+        h3 {
+          font-size: 28px;
         }
       `}</style>
       <Head>
@@ -26,8 +23,6 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      {/* <Script src="/sc.js" strategy="lazyOnload"></Script> */}
       <nav className={styles.mainnav}>
         <ul>
           <li>
@@ -56,10 +51,18 @@ export default function Home() {
         <h1 className={styles.title}>
           <span className="mySpan dummy"> Hunting Coder</span>
         </h1>
+        <div className={styles.imagwrap}>
+          <Image
+            className={styles.myImg}
+            src="/coder.jpg"
+            width={237}
+            height={158}
+            alt="coder image"
+          />
+        </div>
         <p className={styles.description}>
           A blog for hunting coders by a hunting coder
         </p>
-        {/* <div className={`${styles1.con} ${styles2.con}`}> */}
         <div className="blogs">
           <h2>Popular Blogs</h2>
           <div className="blogItem">
@@ -76,19 +79,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 }
