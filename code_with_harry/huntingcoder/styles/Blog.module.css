@@ -15,3 +15,6 @@
   cursor: pointer;
   text-align: justify;
 }
+.blogItemp {
+  max-width: 45vw;
+}

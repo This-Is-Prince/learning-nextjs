@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/BlogPost.module.css";
 
@@ -7,19 +7,22 @@ import styles from "../../styles/BlogPost.module.css";
 const Slug = () => {
   const router = useRouter();
   const { slug } = router.query;
+  const [blog, setBlog] = useState({});
+  useEffect(() => {
+    if (typeof slug === "string") {
+      fetch(`http://localhost:3000/api/getblog?slug=${slug}`).then((res) => {
+        res.json().then((data) => {
+          setBlog(data);
+        });
+      });
+    }
+  }, [slug]);
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1>Title of the page {slug}</h1>
+        <h1>{blog.title}</h1>
         <hr />
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta quas,
-          architecto eum dolore minus tempora debitis, aperiam explicabo
-          dignissimos quasi minima. Accusantium iure quasi quas dolore rem
-          perferendis alias, autem porro deserunt animi veritatis omnis debitis
-          fugit assumenda asperiores voluptatum eos quod excepturi nostrum!
-          Ipsam!
-        </div>
+        <div>{blog.content}</div>
       </main>
     </div>
   );
