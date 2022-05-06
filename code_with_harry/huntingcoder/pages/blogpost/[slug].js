@@ -5,10 +5,13 @@ import styles from "../../styles/BlogPost.module.css";
 // Step 1: Find the file corresponding to the slug.
 // Step 2: Populate them inside the page.
 const Slug = () => {
-  const router = useRouter();
-  const { slug } = router.query;
   const [blog, setBlog] = useState({});
+  const router = useRouter();
   useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+    const { slug } = router.query;
     if (typeof slug === "string") {
       fetch(`http://localhost:3000/api/getblog?slug=${slug}`).then((res) => {
         res.json().then((data) => {
@@ -16,7 +19,7 @@ const Slug = () => {
         });
       });
     }
-  }, [slug]);
+  }, [router.isReady, router.query]);
   return (
     <div className={styles.container}>
       <main className={styles.main}>
